@@ -21,29 +21,37 @@ function Kontakt() {
     }
 
     try {
-      const res = await fetch("https://fresulovagroup.onrender.com", {
+      // Use environment variable (Vite: import.meta.env.VITE_API_URL) so the
+      // deployed client can point to the Render server URL without changing code.
+      const API_BASE = import.meta.env.VITE_API_URL || "https://fresulovagroup.onrender.com";
+
+      const res = await fetch(`${API_BASE}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
+      if (!res.ok) {
+        const errText = await res.text().catch(() => "");
+        throw new Error(errText || `Request failed with status ${res.status}`);
+      }
+
       const data = await res.json();
-      
-      // Ndryshimi këtu - mesazhi i ri
+
+      // Show server message (or a default)
       setStatus(data.message || "Mesazhi u dërgua me sukses!");
-      
-      setFormData({ name: "", email: "", phone: "", message: "" }); // Fshij formën
+
+      setFormData({ name: "", email: "", phone: "", message: "" });
       setFade(false);
 
-      // Aktivizo fade-out pas 3 sekondash
+      // Fade-out after 3s, clear after 7s
       setTimeout(() => setFade(true), 3000);
-
-      // Pastro mesazhin pas 7 sekondash
       setTimeout(() => {
         setStatus("");
         setFade(false);
       }, 7000);
     } catch (error) {
+      console.error(error);
       setStatus("Ka ndodhur një gabim. Ju lutem provoni përsëri.");
       setFade(false);
     }
