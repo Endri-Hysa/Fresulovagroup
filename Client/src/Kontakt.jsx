@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./index.css"; // The fade-out CSS will be here
+import "./index.css";
 
 function Kontakt() {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
@@ -13,16 +13,13 @@ function Kontakt() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check that at least email or phone has been entered
     if (!formData.email && !formData.phone) {
-      setStatus("Please provide an email or phone number.");
+      setStatus("Please provide an email address or phone number.");
       setFade(false);
       return;
     }
 
     try {
-      // Use environment variable (Vite: import.meta.env.VITE_API_URL) so the
-      // deployed client can point to the Render server URL without changing code.
       const API_BASE = import.meta.env.VITE_API_URL || "https://fresulovagroup.onrender.com";
 
       const res = await fetch(`${API_BASE}/api/contact`, {
@@ -38,13 +35,11 @@ function Kontakt() {
 
       const data = await res.json();
 
-      // Show server message (or a default)
-      setStatus(data.message || "Message sent successfully!");
+      setStatus(data.message || "Your message has been sent successfully!");
 
       setFormData({ name: "", email: "", phone: "", message: "" });
       setFade(false);
 
-      // Fade-out after 3s, clear after 7s
       setTimeout(() => setFade(true), 3000);
       setTimeout(() => {
         setStatus("");
@@ -52,7 +47,7 @@ function Kontakt() {
       }, 7000);
     } catch (error) {
       console.error(error);
-      setStatus("An error occurred. Please try again.");
+      setStatus("Something went wrong. Please try again.");
       setFade(false);
     }
   };
@@ -60,12 +55,15 @@ function Kontakt() {
   return (
     <section id="contact">
       <form onSubmit={handleSubmit} className="contact-form">
-        <h2>Work with us</h2>
+        <h2>Get in Touch</h2>
+        <p style={{ marginBottom: "10px", color: "rgb(90,90,90)", lineHeight: "1.7" }}>
+          Tell us about your project and we will get back to you as soon as possible.
+        </p>
 
         <input
           type="text"
           name="name"
-          placeholder="Your name"
+          placeholder="Full name"
           value={formData.name}
           onChange={handleChange}
           required
@@ -74,7 +72,7 @@ function Kontakt() {
         <input
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder="Email address"
           value={formData.email}
           onChange={handleChange}
         />
@@ -89,13 +87,13 @@ function Kontakt() {
 
         <textarea
           name="message"
-          placeholder="Additional information"
+          placeholder="Tell us more about your project"
           value={formData.message}
           onChange={handleChange}
           required
         ></textarea>
 
-        <button type="submit">Send</button>
+        <button type="submit">Send Message</button>
 
         {status && <p className={`status-message ${fade ? "fade" : ""}`}>{status}</p>}
       </form>

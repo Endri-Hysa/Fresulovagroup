@@ -10,32 +10,31 @@ function Hero() {
       className="hero"
       style={{
         backgroundImage: `url("${foto5}")`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        minHeight: "90vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: "center",
-        color: "white",
-        padding: "0 20px",
       }}
     >
-      <h1
-        style={{
-          fontSize: "2rem",
-          maxWidth: "900px",
-          lineHeight: "1.4",
-          textShadow: "0px 2px 8px rgba(0, 0, 0, 0.5)",
-        }}
-      >
-        Warm in winter, cool in summer – with the facade insulation system by FRE SULOVA Group
+      <h1>
+        Warm in winter, cool in summer – with premium facade insulation by FRE SULOVA Group
       </h1>
 
-      <button onClick={() => navigate("/meshome")}>
-        Learn more
-      </button>
+      <div style={{ display: "flex", gap: "15px", flexWrap: "wrap", justifyContent: "center" }}>
+        <button onClick={() => navigate("/meshome")}>
+          Learn More
+        </button>
+
+        <button
+          style={{
+            background: "transparent",
+            color: "white",
+            border: "2px solid white",
+          }}
+          onClick={() => {
+            const el = document.getElementById("contact");
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+          }}
+        >
+          Contact Us
+        </button>
+      </div>
     </section>
   );
 }

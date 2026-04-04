@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
 import logo from "./assets/logojobc.png";
@@ -22,7 +22,7 @@ function MeShume() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -39,212 +39,264 @@ function MeShume() {
         backgroundColor: "var(--light-mint)",
         color: "var(--dark-navy)",
         fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+        minHeight: "100vh",
       }}
     >
       <nav
-        style={{
-          backgroundColor: "var(--dark-navy)",
-          padding: isMobile ? "15px 5%" : "20px 8%",
-          color: "white",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "flex-start",
-          gap: isMobile ? "10px" : "15px",
-          cursor: "pointer",
-          boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
-        }}
-        onClick={() => navigate("/")}
-      >
-        <img
-          src={logo}
-          alt="FRE Sulova logo"
+  style={{
+    background: "rgba(25, 24, 59, 0.88)",
+    backdropFilter: "blur(14px)",
+    WebkitBackdropFilter: "blur(14px)",
+    color: "white",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: isMobile ? "14px 18px" : "18px 8%",
+    boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12)",
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    zIndex: 1000,
+    margin: 0,
+    border: "none",
+  }}
+>
+        <div
+          onClick={() => navigate("/")}
           style={{
-            height: isMobile ? "40px" : "55px",
-            width: isMobile ? "40px" : "55px",
-          }}
-        />
-        <h2
-          style={{
-            fontSize: isMobile ? "16px" : "22px",
-            fontWeight: "600",
-            letterSpacing: "0.5px",
+            display: "flex",
+            alignItems: "center",
+            gap: isMobile ? "10px" : "14px",
+            cursor: "pointer",
+            userSelect: "none",
           }}
         >
-          FRE SULOVA Group
-        </h2>
+          <img
+            src={logo}
+            alt="FRE Sulova Logo"
+            style={{
+              height: isMobile ? "44px" : "54px",
+            }}
+          />
+          <span
+            style={{
+              fontSize: isMobile ? "18px" : "21px",
+              fontWeight: "700",
+              letterSpacing: "0.4px",
+              color: "white",
+            }}
+          >
+            FRE SULOVA Group
+          </span>
+        </div>
       </nav>
 
-      <section style={{ padding: isMobile ? "50px 5%" : "80px 8%", textAlign: "center" }}>
-        <div style={{ marginBottom: isMobile ? "35px" : "50px" }}>
-          <h2
-            style={{
-              fontSize: isMobile ? "1.75rem" : "2.5rem",
-              color: "var(--dark-navy)",
-              fontWeight: "700",
-            }}
-          >
-            Our Services
-          </h2>
-        </div>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: isMobile ? "20px" : "30px",
-            maxWidth: "1400px",
-            margin: "0 auto",
-          }}
-        >
-          <div
-            style={{
-              backgroundColor: "white",
-              borderRadius: isMobile ? "12px" : "15px",
-              padding: isMobile ? "20px" : "30px",
-              boxShadow: "0 5px 20px rgba(0,0,0,0.1)",
-              transition: "transform 0.3s ease",
-            }}
-            onMouseOver={(e) => !isMobile && (e.currentTarget.style.transform = "translateY(-5px)")}
-            onMouseOut={(e) => (e.currentTarget.style.transform = "translateY(0)")}
-          >
-            <h3
+      <div style={{ paddingTop: isMobile ? "120px" : "100px" }}>
+        <section style={{ padding: isMobile ? "50px 5%" : "80px 8%", textAlign: "center" }}>
+          <div style={{ marginBottom: isMobile ? "35px" : "50px" }}>
+            <h2
               style={{
+                fontSize: isMobile ? "1.75rem" : "2.5rem",
                 color: "var(--dark-navy)",
-                fontSize: isMobile ? "1.2rem" : "1.4rem",
-                marginBottom: "15px",
+                fontWeight: "700",
               }}
             >
-              Facade Insulation
-            </h3>
-            <p
-              style={{
-                color: "rgb(60,60,60)",
-                lineHeight: "1.7",
-                fontSize: isMobile ? "0.95rem" : "1rem",
-              }}
-            >
-              Use of the capot system for maximum energy efficiency in every building,
-              while maintaining aesthetics and durability.
-            </p>
+              Our Services
+            </h2>
           </div>
 
           <div
             style={{
-              backgroundColor: "white",
-              borderRadius: isMobile ? "12px" : "15px",
-              padding: isMobile ? "20px" : "30px",
-              boxShadow: "0 5px 20px rgba(0,0,0,0.1)",
-              transition: "transform 0.3s ease",
-            }}
-            onMouseOver={(e) => !isMobile && (e.currentTarget.style.transform = "translateY(-5px)")}
-            onMouseOut={(e) => (e.currentTarget.style.transform = "translateY(0)")}
-          >
-            <h3
-              style={{
-                color: "var(--dark-navy)",
-                fontSize: isMobile ? "1.2rem" : "1.4rem",
-                marginBottom: "15px",
-              }}
-            >
-              Exterior Works
-            </h3>
-            <p
-              style={{
-                color: "rgb(60,60,60)",
-                lineHeight: "1.7",
-                fontSize: isMobile ? "0.95rem" : "1rem",
-              }}
-            >
-              Insulation, plastering, and decorative finishes for a modern look and
-              protection against weather conditions.
-            </p>
-          </div>
-
-          <div
-            style={{
-              backgroundColor: "white",
-              borderRadius: isMobile ? "12px" : "15px",
-              padding: isMobile ? "20px" : "30px",
-              boxShadow: "0 5px 20px rgba(0,0,0,0.1)",
-              transition: "transform 0.3s ease",
-            }}
-            onMouseOver={(e) => !isMobile && (e.currentTarget.style.transform = "translateY(-5px)")}
-            onMouseOut={(e) => (e.currentTarget.style.transform = "translateY(0)")}
-          >
-            <h3
-              style={{
-                color: "var(--dark-navy)",
-                fontSize: isMobile ? "1.2rem" : "1.4rem",
-                marginBottom: "15px",
-              }}
-            >
-              Material Consulting
-            </h3>
-            <p
-              style={{
-                color: "rgb(60,60,60)",
-                lineHeight: "1.7",
-                fontSize: isMobile ? "0.95rem" : "1rem",
-              }}
-            >
-              Selection of the highest quality materials for long-term durability and
-              energy savings for our clients.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section style={{ padding: isMobile ? "50px 5%" : "80px 8%", textAlign: "center" }}>
-        <div style={{ marginBottom: isMobile ? "35px" : "50px" }}>
-          <h2
-            style={{
-              fontSize: isMobile ? "1.75rem" : "2.5rem",
-              color: "var(--dark-navy)",
-              fontWeight: "700",
+              display: "grid",
+              gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: isMobile ? "20px" : "30px",
+              maxWidth: "1400px",
+              margin: "0 auto",
             }}
           >
-            Some of Our Projects
-          </h2>
-        </div>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: isMobile ? "20px" : "30px",
-            maxWidth: "1400px",
-            margin: "0 auto",
-          }}
-        >
-          {punime.map((src, i) => (
             <div
-              key={i}
               style={{
-                background: "white",
-                borderRadius: isMobile ? "12px" : "15px",
-                overflow: "hidden",
-                boxShadow: "0 5px 20px rgba(0,0,0,0.1)",
-                cursor: "pointer",
-                transition: "transform 0.3s ease",
+                backgroundColor: "white",
+                borderRadius: isMobile ? "14px" : "20px",
+                padding: isMobile ? "22px" : "30px",
+                boxShadow: "0 14px 36px rgba(0,0,0,0.12)",
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
               }}
-              onClick={() => setSelectedImage(src)}
-              onMouseOver={(e) => !isMobile && (e.currentTarget.style.transform = "translateY(-5px)")}
-              onMouseOut={(e) => (e.currentTarget.style.transform = "translateY(0)")}
+              onMouseOver={(e) => {
+                if (!isMobile) {
+                  e.currentTarget.style.transform = "translateY(-8px)";
+                  e.currentTarget.style.boxShadow = "0 24px 60px rgba(0,0,0,0.18)";
+                }
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "0 14px 36px rgba(0,0,0,0.12)";
+              }}
             >
-              <img
-                src={src}
-                alt={`Project ${i + 1}`}
+              <h3
                 style={{
-                  width: "100%",
-                  height: isMobile ? "220px" : "280px",
-                  objectFit: "cover",
-                  display: "block",
+                  color: "var(--dark-navy)",
+                  fontSize: isMobile ? "1.2rem" : "1.4rem",
+                  marginBottom: "15px",
                 }}
-              />
+              >
+                Facade Insulation
+              </h3>
+              <p
+                style={{
+                  color: "rgb(60,60,60)",
+                  lineHeight: "1.8",
+                  fontSize: isMobile ? "0.95rem" : "1rem",
+                }}
+              >
+                High-performance facade insulation using modern capot systems,
+                designed to improve comfort, energy efficiency, and long-term durability.
+              </p>
             </div>
-          ))}
-        </div>
-      </section>
+
+            <div
+              style={{
+                backgroundColor: "white",
+                borderRadius: isMobile ? "14px" : "20px",
+                padding: isMobile ? "22px" : "30px",
+                boxShadow: "0 14px 36px rgba(0,0,0,0.12)",
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+              }}
+              onMouseOver={(e) => {
+                if (!isMobile) {
+                  e.currentTarget.style.transform = "translateY(-8px)";
+                  e.currentTarget.style.boxShadow = "0 24px 60px rgba(0,0,0,0.18)";
+                }
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "0 14px 36px rgba(0,0,0,0.12)";
+              }}
+            >
+              <h3
+                style={{
+                  color: "var(--dark-navy)",
+                  fontSize: isMobile ? "1.2rem" : "1.4rem",
+                  marginBottom: "15px",
+                }}
+              >
+                Exterior Works
+              </h3>
+              <p
+                style={{
+                  color: "rgb(60,60,60)",
+                  lineHeight: "1.8",
+                  fontSize: isMobile ? "0.95rem" : "1rem",
+                }}
+              >
+                Exterior insulation, plastering, and decorative finishes for a modern appearance
+                and reliable protection against weather conditions.
+              </p>
+            </div>
+
+            <div
+              style={{
+                backgroundColor: "white",
+                borderRadius: isMobile ? "14px" : "20px",
+                padding: isMobile ? "22px" : "30px",
+                boxShadow: "0 14px 36px rgba(0,0,0,0.12)",
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+              }}
+              onMouseOver={(e) => {
+                if (!isMobile) {
+                  e.currentTarget.style.transform = "translateY(-8px)";
+                  e.currentTarget.style.boxShadow = "0 24px 60px rgba(0,0,0,0.18)";
+                }
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "0 14px 36px rgba(0,0,0,0.12)";
+              }}
+            >
+              <h3
+                style={{
+                  color: "var(--dark-navy)",
+                  fontSize: isMobile ? "1.2rem" : "1.4rem",
+                  marginBottom: "15px",
+                }}
+              >
+                Material Consulting
+              </h3>
+              <p
+                style={{
+                  color: "rgb(60,60,60)",
+                  lineHeight: "1.8",
+                  fontSize: isMobile ? "0.95rem" : "1rem",
+                }}
+              >
+                Guidance in selecting high-quality materials for better durability,
+                better finishes, and greater energy savings.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section style={{ padding: isMobile ? "50px 5% 80px" : "80px 8% 100px", textAlign: "center" }}>
+          <div style={{ marginBottom: isMobile ? "35px" : "50px" }}>
+            <h2
+              style={{
+                fontSize: isMobile ? "1.75rem" : "2.5rem",
+                color: "var(--dark-navy)",
+                fontWeight: "700",
+              }}
+            >
+              Some of Our Projects
+            </h2>
+          </div>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: isMobile ? "20px" : "30px",
+              maxWidth: "1400px",
+              margin: "0 auto",
+            }}
+          >
+            {punime.map((src, i) => (
+              <div
+                key={i}
+                style={{
+                  background: "white",
+                  borderRadius: isMobile ? "14px" : "20px",
+                  overflow: "hidden",
+                  boxShadow: "0 14px 36px rgba(0,0,0,0.12)",
+                  cursor: "pointer",
+                  transition: "transform 0.35s ease, box-shadow 0.35s ease",
+                }}
+                onClick={() => setSelectedImage(src)}
+                onMouseOver={(e) => {
+                  if (!isMobile) {
+                    e.currentTarget.style.transform = "translateY(-10px) scale(1.02)";
+                    e.currentTarget.style.boxShadow = "0 24px 60px rgba(0,0,0,0.18)";
+                  }
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = "translateY(0) scale(1)";
+                  e.currentTarget.style.boxShadow = "0 14px 36px rgba(0,0,0,0.12)";
+                }}
+              >
+                <img
+                  src={src}
+                  alt={`Project ${i + 1}`}
+                  style={{
+                    width: "100%",
+                    height: isMobile ? "220px" : "280px",
+                    objectFit: "cover",
+                    display: "block",
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
 
       {selectedImage && (
         <div
@@ -252,7 +304,7 @@ function MeShume() {
           style={{
             position: "fixed",
             inset: 0,
-            backgroundColor: "rgba(0,0,0,0.9)",
+            backgroundColor: "rgba(0, 0, 0, 0.92)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -267,8 +319,8 @@ function MeShume() {
             style={{
               maxWidth: "100%",
               maxHeight: "100%",
-              borderRadius: isMobile ? "10px" : "15px",
-              boxShadow: "0 0 30px rgba(255,255,255,0.2)",
+              borderRadius: isMobile ? "12px" : "18px",
+              boxShadow: "0 0 40px rgba(255,255,255,0.15)",
               objectFit: "contain",
             }}
           />
