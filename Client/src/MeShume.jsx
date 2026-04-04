@@ -24,8 +24,8 @@ function MeShume() {
 
   React.useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const punime = [
@@ -41,7 +41,6 @@ function MeShume() {
         fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
       }}
     >
-      {/* Navbar */}
       <nav
         style={{
           backgroundColor: "var(--dark-navy)",
@@ -64,16 +63,17 @@ function MeShume() {
             width: isMobile ? "40px" : "55px",
           }}
         />
-        <h2 style={{ 
-          fontSize: isMobile ? "16px" : "22px", 
-          fontWeight: "600", 
-          letterSpacing: "0.5px" 
-        }}>
+        <h2
+          style={{
+            fontSize: isMobile ? "16px" : "22px",
+            fontWeight: "600",
+            letterSpacing: "0.5px",
+          }}
+        >
           FRE SULOVA Group
         </h2>
       </nav>
 
-      {/* Services Section */}
       <section style={{ padding: isMobile ? "50px 5%" : "80px 8%", textAlign: "center" }}>
         <div style={{ marginBottom: isMobile ? "35px" : "50px" }}>
           <h2
@@ -96,39 +96,104 @@ function MeShume() {
             margin: "0 auto",
           }}
         >
-          <div style={cardStyle}>
-            <h3 style={titleStyle}>
+          <div
+            style={{
+              backgroundColor: "white",
+              borderRadius: isMobile ? "12px" : "15px",
+              padding: isMobile ? "20px" : "30px",
+              boxShadow: "0 5px 20px rgba(0,0,0,0.1)",
+              transition: "transform 0.3s ease",
+            }}
+            onMouseOver={(e) => !isMobile && (e.currentTarget.style.transform = "translateY(-5px)")}
+            onMouseOut={(e) => (e.currentTarget.style.transform = "translateY(0)")}
+          >
+            <h3
+              style={{
+                color: "var(--dark-navy)",
+                fontSize: isMobile ? "1.2rem" : "1.4rem",
+                marginBottom: "15px",
+              }}
+            >
               Facade Insulation
             </h3>
-            <p style={textStyle}>
+            <p
+              style={{
+                color: "rgb(60,60,60)",
+                lineHeight: "1.7",
+                fontSize: isMobile ? "0.95rem" : "1rem",
+              }}
+            >
               Use of the capot system for maximum energy efficiency in every building,
               while maintaining aesthetics and durability.
             </p>
           </div>
 
-          <div style={cardStyle}>
-            <h3 style={titleStyle}>
+          <div
+            style={{
+              backgroundColor: "white",
+              borderRadius: isMobile ? "12px" : "15px",
+              padding: isMobile ? "20px" : "30px",
+              boxShadow: "0 5px 20px rgba(0,0,0,0.1)",
+              transition: "transform 0.3s ease",
+            }}
+            onMouseOver={(e) => !isMobile && (e.currentTarget.style.transform = "translateY(-5px)")}
+            onMouseOut={(e) => (e.currentTarget.style.transform = "translateY(0)")}
+          >
+            <h3
+              style={{
+                color: "var(--dark-navy)",
+                fontSize: isMobile ? "1.2rem" : "1.4rem",
+                marginBottom: "15px",
+              }}
+            >
               Exterior Works
             </h3>
-            <p style={textStyle}>
+            <p
+              style={{
+                color: "rgb(60,60,60)",
+                lineHeight: "1.7",
+                fontSize: isMobile ? "0.95rem" : "1rem",
+              }}
+            >
               Insulation, plastering, and decorative finishes for a modern look and
               protection against weather conditions.
             </p>
           </div>
 
-          <div style={cardStyle}>
-            <h3 style={titleStyle}>
+          <div
+            style={{
+              backgroundColor: "white",
+              borderRadius: isMobile ? "12px" : "15px",
+              padding: isMobile ? "20px" : "30px",
+              boxShadow: "0 5px 20px rgba(0,0,0,0.1)",
+              transition: "transform 0.3s ease",
+            }}
+            onMouseOver={(e) => !isMobile && (e.currentTarget.style.transform = "translateY(-5px)")}
+            onMouseOut={(e) => (e.currentTarget.style.transform = "translateY(0)")}
+          >
+            <h3
+              style={{
+                color: "var(--dark-navy)",
+                fontSize: isMobile ? "1.2rem" : "1.4rem",
+                marginBottom: "15px",
+              }}
+            >
               Material Consulting
             </h3>
-            <p style={textStyle}>
-              Selection of the highest quality materials for long-term durability
-              and energy savings for our clients.
+            <p
+              style={{
+                color: "rgb(60,60,60)",
+                lineHeight: "1.7",
+                fontSize: isMobile ? "0.95rem" : "1rem",
+              }}
+            >
+              Selection of the highest quality materials for long-term durability and
+              energy savings for our clients.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Projects Section */}
       <section style={{ padding: isMobile ? "50px 5%" : "80px 8%", textAlign: "center" }}>
         <div style={{ marginBottom: isMobile ? "35px" : "50px" }}>
           <h2
@@ -181,7 +246,6 @@ function MeShume() {
         </div>
       </section>
 
-      {/* Image popup */}
       {selectedImage && (
         <div
           onClick={() => setSelectedImage(null)}
