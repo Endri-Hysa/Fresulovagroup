@@ -16,54 +16,60 @@ import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
-
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [pathname]);
-
   return null;
 }
 
 function RouteEffects() {
   const location = useLocation();
-
   useEffect(() => {
     const elements = document.querySelectorAll(".fade-in");
-
     if (!elements.length) return;
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-          }
+          if (entry.isIntersecting) entry.target.classList.add("show");
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0.1 }
     );
-
-    elements.forEach((el) => {
-      el.classList.remove("show");
-      observer.observe(el);
-    });
-
-    return () => {
-      elements.forEach((el) => observer.unobserve(el));
-      observer.disconnect();
-    };
+    elements.forEach((el) => { el.classList.remove("show"); observer.observe(el); });
+    return () => { elements.forEach((el) => observer.unobserve(el)); observer.disconnect(); };
   }, [location.pathname]);
-
   return null;
+}
+
+function StatsBar() {
+  return (
+    <div className="stats-bar">
+      <div className="stat-item">
+        <h3>200+</h3>
+        <p>Projects Completed</p>
+      </div>
+      <div className="stat-item">
+        <h3>12+</h3>
+        <p>Years of Experience</p>
+      </div>
+      <div className="stat-item">
+        <h3>98%</h3>
+        <p>Client Satisfaction</p>
+      </div>
+      <div className="stat-item">
+        <h3>50+</h3>
+        <p>Expert Team Members</p>
+      </div>
+    </div>
+  );
 }
 
 function HomePage() {
   return (
     <>
       <Nav />
-      <div className="fade-in">
-        <Hero />
-      </div>
+      <Hero />
+      <StatsBar />
       <div className="fade-in">
         <Punimet />
       </div>
@@ -86,27 +92,13 @@ function App() {
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
-
       setShowScrollTop(scrollPosition > 300);
       setShowScrollBottom(scrollPosition + windowHeight < documentHeight - 100);
     };
-
     handleScroll();
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const scrollToBottom = () => {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: "smooth",
-    });
-  };
 
   return (
     <Router>
@@ -122,7 +114,7 @@ function App() {
 
       <button
         className={`scroll-to-top ${showScrollTop ? "show" : ""}`}
-        onClick={scrollToTop}
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         aria-label="Scroll to top"
       >
         <FaArrowUp />
@@ -130,7 +122,7 @@ function App() {
 
       <button
         className={`scroll-to-bottom ${showScrollBottom ? "show" : ""}`}
-        onClick={scrollToBottom}
+        onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" })}
         aria-label="Scroll to bottom"
       >
         <FaArrowDown />
