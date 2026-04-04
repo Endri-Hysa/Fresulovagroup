@@ -30,11 +30,11 @@ function Hero() {
           textShadow: "0px 2px 8px rgba(0, 0, 0, 0.5)",
         }}
       >
-        Ngrohtë në dimër, freskët në verë – me sistemin kapot nga FRE SULOVA Group
+        Warm in winter, cool in summer – with the facade insulation system by FRE SULOVA Group
       </h1>
 
       <button onClick={() => navigate("/meshome")}>
-        Më shumë
+        Learn more
       </button>
     </section>
   );

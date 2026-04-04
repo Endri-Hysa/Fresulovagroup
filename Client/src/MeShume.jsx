@@ -73,7 +73,7 @@ function MeShume() {
         </h2>
       </nav>
 
-      {/* Seksioni Shërbimet tona */}
+      {/* Services Section */}
       <section style={{ padding: isMobile ? "50px 5%" : "80px 8%", textAlign: "center" }}>
         <div style={{ marginBottom: isMobile ? "35px" : "50px" }}>
           <h2
@@ -83,7 +83,7 @@ function MeShume() {
               fontWeight: "700",
             }}
           >
-            Shërbimet tona
+            Our Services
           </h2>
         </div>
 
@@ -96,93 +96,39 @@ function MeShume() {
             margin: "0 auto",
           }}
         >
-          <div
-            style={{
-              backgroundColor: "white",
-              borderRadius: isMobile ? "12px" : "15px",
-              padding: isMobile ? "20px" : "30px",
-              boxShadow: "0 5px 20px rgba(0,0,0,0.1)",
-              transition: "transform 0.3s ease",
-            }}
-            onMouseOver={(e) => !isMobile && (e.currentTarget.style.transform = "translateY(-5px)")}
-            onMouseOut={(e) => (e.currentTarget.style.transform = "translateY(0)")}
-          >
-            <h3 style={{ 
-              color: "var(--dark-navy)", 
-              fontSize: isMobile ? "1.2rem" : "1.4rem", 
-              marginBottom: "15px" 
-            }}>
-              Izolim fasade
+          <div style={cardStyle}>
+            <h3 style={titleStyle}>
+              Facade Insulation
             </h3>
-            <p style={{ 
-              color: "rgb(60,60,60)", 
-              lineHeight: "1.7",
-              fontSize: isMobile ? "0.95rem" : "1rem"
-            }}>
-              Përdorim i sistemit kapot për efikasitet maksimal energjetik në
-              çdo objekt, duke ruajtur estetikën dhe qëndrueshmërinë.
+            <p style={textStyle}>
+              Use of the capot system for maximum energy efficiency in every building,
+              while maintaining aesthetics and durability.
             </p>
           </div>
 
-          <div
-            style={{
-              backgroundColor: "white",
-              borderRadius: isMobile ? "12px" : "15px",
-              padding: isMobile ? "20px" : "30px",
-              boxShadow: "0 5px 20px rgba(0,0,0,0.1)",
-              transition: "transform 0.3s ease",
-            }}
-            onMouseOver={(e) => !isMobile && (e.currentTarget.style.transform = "translateY(-5px)")}
-            onMouseOut={(e) => (e.currentTarget.style.transform = "translateY(0)")}
-          >
-            <h3 style={{ 
-              color: "var(--dark-navy)", 
-              fontSize: isMobile ? "1.2rem" : "1.4rem", 
-              marginBottom: "15px" 
-            }}>
-              Punime të jashtme
+          <div style={cardStyle}>
+            <h3 style={titleStyle}>
+              Exterior Works
             </h3>
-            <p style={{ 
-              color: "rgb(60,60,60)", 
-              lineHeight: "1.7",
-              fontSize: isMobile ? "0.95rem" : "1rem"
-            }}>
-              Izolim, suvaje dhe përfundime dekorative për pamje moderne dhe
-              mbrojtje ndaj kushteve atmosferike.
+            <p style={textStyle}>
+              Insulation, plastering, and decorative finishes for a modern look and
+              protection against weather conditions.
             </p>
           </div>
 
-          <div
-            style={{
-              backgroundColor: "white",
-              borderRadius: isMobile ? "12px" : "15px",
-              padding: isMobile ? "20px" : "30px",
-              boxShadow: "0 5px 20px rgba(0,0,0,0.1)",
-              transition: "transform 0.3s ease",
-            }}
-            onMouseOver={(e) => !isMobile && (e.currentTarget.style.transform = "translateY(-5px)")}
-            onMouseOut={(e) => (e.currentTarget.style.transform = "translateY(0)")}
-          >
-            <h3 style={{ 
-              color: "var(--dark-navy)", 
-              fontSize: isMobile ? "1.2rem" : "1.4rem", 
-              marginBottom: "15px" 
-            }}>
-              Konsulencë materiale
+          <div style={cardStyle}>
+            <h3 style={titleStyle}>
+              Material Consulting
             </h3>
-            <p style={{ 
-              color: "rgb(60,60,60)", 
-              lineHeight: "1.7",
-              fontSize: isMobile ? "0.95rem" : "1rem"
-            }}>
-              Zgjedhja e materialeve më cilësore për qëndrueshmëri afatgjatë dhe
-              kursim energjie për klientët tanë.
+            <p style={textStyle}>
+              Selection of the highest quality materials for long-term durability
+              and energy savings for our clients.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Seksioni Punimet */}
+      {/* Projects Section */}
       <section style={{ padding: isMobile ? "50px 5%" : "80px 8%", textAlign: "center" }}>
         <div style={{ marginBottom: isMobile ? "35px" : "50px" }}>
           <h2
@@ -192,7 +138,7 @@ function MeShume() {
               fontWeight: "700",
             }}
           >
-            Disa nga punimet tona
+            Some of Our Projects
           </h2>
         </div>
 
@@ -222,7 +168,7 @@ function MeShume() {
             >
               <img
                 src={src}
-                alt={`Punim ${i + 1}`}
+                alt={`Project ${i + 1}`}
                 style={{
                   width: "100%",
                   height: isMobile ? "220px" : "280px",
@@ -235,7 +181,7 @@ function MeShume() {
         </div>
       </section>
 
-      {/* Popup për foton e zgjedhur */}
+      {/* Image popup */}
       {selectedImage && (
         <div
           onClick={() => setSelectedImage(null)}
@@ -253,7 +199,7 @@ function MeShume() {
         >
           <img
             src={selectedImage}
-            alt="Punim i zgjedhur"
+            alt="Selected project"
             style={{
               maxWidth: "100%",
               maxHeight: "100%",

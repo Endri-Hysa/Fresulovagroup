@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./index.css"; // CSS i fade-out do të jetë këtu
+import "./index.css"; // The fade-out CSS will be here
 
 function Kontakt() {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
@@ -13,9 +13,9 @@ function Kontakt() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Kontrollo që të paktën email ose telefoni të jetë futur
+    // Check that at least email or phone has been entered
     if (!formData.email && !formData.phone) {
-      setStatus("Ju lutem jepni email ose numrin e telefonit.");
+      setStatus("Please provide an email or phone number.");
       setFade(false);
       return;
     }
@@ -39,7 +39,7 @@ function Kontakt() {
       const data = await res.json();
 
       // Show server message (or a default)
-      setStatus(data.message || "Mesazhi u dërgua me sukses!");
+      setStatus(data.message || "Message sent successfully!");
 
       setFormData({ name: "", email: "", phone: "", message: "" });
       setFade(false);
@@ -52,7 +52,7 @@ function Kontakt() {
       }, 7000);
     } catch (error) {
       console.error(error);
-      setStatus("Ka ndodhur një gabim. Ju lutem provoni përsëri.");
+      setStatus("An error occurred. Please try again.");
       setFade(false);
     }
   };
@@ -60,12 +60,12 @@ function Kontakt() {
   return (
     <section id="contact">
       <form onSubmit={handleSubmit} className="contact-form">
-        <h2>Puno me ne</h2>
+        <h2>Work with us</h2>
 
         <input
           type="text"
           name="name"
-          placeholder="Emri juaj"
+          placeholder="Your name"
           value={formData.name}
           onChange={handleChange}
           required
@@ -82,20 +82,20 @@ function Kontakt() {
         <input
           type="text"
           name="phone"
-          placeholder="Numri i telefonit"
+          placeholder="Phone number"
           value={formData.phone}
           onChange={handleChange}
         />
 
         <textarea
           name="message"
-          placeholder="Informacion shtesë"
+          placeholder="Additional information"
           value={formData.message}
           onChange={handleChange}
           required
         ></textarea>
 
-        <button type="submit">Dërgo</button>
+        <button type="submit">Send</button>
 
         {status && <p className={`status-message ${fade ? "fade" : ""}`}>{status}</p>}
       </form>
