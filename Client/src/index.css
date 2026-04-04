@@ -53,7 +53,6 @@ section h2 {
   letter-spacing: -0.02em;
 }
 
-/* ── Navbar ── */
 nav {
   background: rgba(18, 17, 48, 0.88);
   backdrop-filter: blur(20px) saturate(180%);
@@ -108,16 +107,22 @@ nav a::after {
 nav a:hover { color: white; }
 nav a:hover::after { width: 100%; }
 
-/* ── Hero ── */
 .hero {
-  min-height: 100vh;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  background-size: cover; background-position: center;
-  background-attachment: fixed;
-  color: white; text-align: center;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+
+  color: white;
+  text-align: center;
   padding: 150px 20px 90px;
-  position: relative; isolation: isolate;
+  position: relative;
+  isolation: isolate;
 }
 
 .hero::before {
